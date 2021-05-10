@@ -13,7 +13,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			personas: ["MATI"],
+			personas: [],
 			planetas: []
 		},
 		actions: {

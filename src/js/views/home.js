@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import Personas from "./personas";
-import Planetas from "./planetas";
+import Card from "../component/card";
+import { Context } from "../store/appContext";
 
-export const Home = () => (
-	<div className="m-5  d-flex justify-content-center">
-		<Personas />
-		<Planetas />
-	</div>
-);
+export const Home = () => {
+	const { store, actions } = useContext(Context);
+	return (
+		<div className="container-fluid">
+			<h2 className="text-white">Characters</h2>
+			<div className="row flex-row flex-nowrap overflow-auto">
+				{store.personas.map((item, index) => {
+					return <Card key={index} name={item.name} />;
+				})}
+			</div>
+		</div>
+	);
+};
