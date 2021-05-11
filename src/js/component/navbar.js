@@ -6,10 +6,10 @@ export const Navbar = () => {
 	return (
 		<nav
 			className="navbar fixed-top navbar-light mb-3 d-flex justify-content-between"
-			style={{ backgroundColor: "#000000", height: "100px" }}>
+			style={{ backgroundColor: "#000000" }}>
 			<div />
 			<Link to="/">
-				<img className="" src={star_wars_img} height="90px" width="200px" />
+				<img className="" src={star_wars_img} height="80px" width="200px" />
 			</Link>
 			<div className="">
 				<div className="dropdown">
