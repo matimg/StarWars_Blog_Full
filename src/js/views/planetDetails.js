@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import planeta from "../../img/planeta.png";
 
 const PlanetDetails = () => {
 	const { store, actions } = useContext(Context);
@@ -10,15 +11,11 @@ const PlanetDetails = () => {
 		actions.getPlaneta(params.id);
 	}, []);
 	return (
-		<div className="container pt-5 mt-5">
+		<div className="container pt-5 mt-5 text-center">
 			<div className="container pt-3 mt-3" style={{ backgroundColor: "#282727" }}>
 				<div className="row p-3">
 					<div className="col-6">
-						<img
-							className="card-img-top"
-							src="https://i.pinimg.com/originals/e0/c9/bd/e0c9bd2e3166c58a9aea8bb85f20e8a9.jpg"
-							height="450px"
-						/>
+						<img className="card-img-top" src={planeta} height="450px" />
 					</div>
 					<div className="col-6 text-white text-center">
 						<h1 className="text-warning">{store.detallePlaneta.name}</h1>
@@ -52,6 +49,9 @@ const PlanetDetails = () => {
 					</div>
 				</div>
 			</div>
+			<Link to="/">
+				<button className="btn btn-warning mt-2">Back</button>
+			</Link>
 		</div>
 	);
 };

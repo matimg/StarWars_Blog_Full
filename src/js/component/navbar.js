@@ -9,11 +9,11 @@ export const Navbar = () => {
 		<nav
 			className="navbar fixed-top navbar-light mb-3 d-flex justify-content-between"
 			style={{ backgroundColor: "#000000" }}>
-			<div />
+			<div className="ml-5" />
 			<Link to="/">
 				<img className="ml-5" src={star_wars_img} height="80px" width="200px" />
 			</Link>
-			<div className="">
+			<div className="m-0">
 				<div className="dropdown">
 					<button
 						className="btn btn-warning dropdown-toggle"
@@ -28,7 +28,9 @@ export const Navbar = () => {
 						</div>
 					</button>
 					<div className="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuButton">
-						<li>{store.favoritos.length == 0 ? "(empty)" : ""}</li>
+						<li className="dropdown-item bg-dark text-white">
+							{store.favoritos.length == 0 ? "(empty)" : ""}
+						</li>
 						{store.favoritos.map((item, index) => {
 							return (
 								<li key={index} className="dropdown-item bg-dark text-white" href="#">

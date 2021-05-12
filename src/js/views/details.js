@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import personaje from "../../img/personaje.jpg";
 
 const Details = () => {
 	const { store, actions } = useContext(Context);
@@ -11,15 +12,11 @@ const Details = () => {
 	}, []);
 
 	return (
-		<div className="container pt-5 mt-5">
+		<div className="container pt-5 mt-5 text-center">
 			<div className="container pt-2 mt-2" style={{ backgroundColor: "#282727" }}>
 				<div className="row p-3">
 					<div className="col-6">
-						<img
-							className="card-img-top"
-							src="https://cdn6.dibujos.net/images/listas/140/darth-vader.jpg"
-							height="450px"
-						/>
+						<img className="card-img-top" src={personaje} height="450px" />
 					</div>
 					<div className="col-6 text-white text-center">
 						<h1 className="text-warning">{store.propiedades.name}</h1>
@@ -53,6 +50,9 @@ const Details = () => {
 					</div>
 				</div>
 			</div>
+			<Link to="/">
+				<button className="btn btn-warning mt-2">Back</button>
+			</Link>
 		</div>
 	);
 };
