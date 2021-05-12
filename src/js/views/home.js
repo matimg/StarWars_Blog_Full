@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import personaje from "../../img/personaje.jpg";
+import planeta from "../../img/planeta.png";
 import "../../styles/home.scss";
 import Card from "../component/card";
 import { Context } from "../store/appContext";
@@ -16,7 +17,7 @@ export const Home = () => {
 							key={index}
 							name={item.name}
 							id={item.uid}
-							image="https://cdn6.dibujos.net/images/listas/140/darth-vader.jpg"
+							image={personaje}
 							detalle="/character_details/"
 						/>
 					);
@@ -27,13 +28,7 @@ export const Home = () => {
 			<div className="row flex-row flex-nowrap" style={{ overflowX: "auto", overflowY: "hidden" }}>
 				{store.planetas.map((item, index) => {
 					return (
-						<Card
-							key={index}
-							name={item.name}
-							id={item.uid}
-							image="https://i.pinimg.com/originals/e0/c9/bd/e0c9bd2e3166c58a9aea8bb85f20e8a9.jpg"
-							detalle="/planet_details/"
-						/>
+						<Card key={index} name={item.name} id={item.uid} image={planeta} detalle="/planet_details/" />
 					);
 				})}
 			</div>

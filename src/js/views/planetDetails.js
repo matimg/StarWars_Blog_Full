@@ -28,27 +28,27 @@ const PlanetDetails = () => {
 				<div className="row border-top border-danger text-danger text-center">
 					<div className="col-2">
 						<p>Name</p>
-						<p>{store.detallePlaneta.name}</p>
+						<p className="text-white">{store.detallePlaneta.name}</p>
 					</div>
 					<div className="col-2">
 						<p>Climate</p>
-						<p>{store.detallePlaneta.climate}</p>
+						<p className="text-white">{store.detallePlaneta.climate}</p>
 					</div>
 					<div className="col-2">
 						<p>Population</p>
-						<p>{store.detallePlaneta.population}</p>
+						<p className="text-white">{store.detallePlaneta.population}</p>
 					</div>
 					<div className="col-2">
 						<p>Orbital Period</p>
-						<p>{store.detallePlaneta.orbital_period}</p>
+						<p className="text-white">{store.detallePlaneta.orbital_period}</p>
 					</div>
 					<div className="col-2">
 						<p>Rotation Period</p>
-						<p>{store.detallePlaneta.rotation_period}</p>
+						<p className="text-white">{store.detallePlaneta.rotation_period}</p>
 					</div>
 					<div className="col-2">
 						<p>Diameter</p>
-						<p>{store.detallePlaneta.diameter}</p>
+						<p className="text-white">{store.detallePlaneta.diameter}</p>
 					</div>
 				</div>
 			</div>

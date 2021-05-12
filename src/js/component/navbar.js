@@ -11,7 +11,7 @@ export const Navbar = () => {
 			style={{ backgroundColor: "#000000" }}>
 			<div />
 			<Link to="/">
-				<img className="" src={star_wars_img} height="80px" width="200px" />
+				<img className="ml-5" src={star_wars_img} height="80px" width="200px" />
 			</Link>
 			<div className="">
 				<div className="dropdown">
@@ -28,6 +28,7 @@ export const Navbar = () => {
 						</div>
 					</button>
 					<div className="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuButton">
+						<li>{store.favoritos.length == 0 ? "(empty)" : ""}</li>
 						{store.favoritos.map((item, index) => {
 							return (
 								<li key={index} className="dropdown-item bg-dark text-white" href="#">
