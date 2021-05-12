@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, StaticRouter } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Card = props => {
+	const { store, actions } = useContext(Context);
 	return (
 		<div className="col">
 			<div className="card border-warning text-white" style={{ width: "250px", backgroundColor: "#282727" }}>
@@ -15,6 +17,9 @@ const Card = props => {
 					<Link to={props.detalle + props.id}>
 						<button className="btn btn-warning">Learn more!</button>
 					</Link>
+					<button className="btn btn-outline-warning ml-5" onClick={() => actions.addFavorito(props.name)}>
+						<i className="far fa-heart" />
+					</button>
 				</div>
 			</div>
 		</div>

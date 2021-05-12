@@ -67,12 +67,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ planeta: data.result, detallePlaneta: data.result.properties }))
 					.catch(err => console.error(err));
 			},
-			addFavorito: nombre => {
+			addFavorito: element => {
+				const store = getStore();
 				let favoritosCopy = [...store.favoritos];
-				favoritosCopy.push(nombre);
+				favoritosCopy.push(element);
 				setStore({ favoritos: favoritosCopy });
 			},
-			removeFavorito: nombre => {
+			removeFavorito: element => {
+				const store = getStore();
 				let favoritosCopy = [...store.favoritos];
 				setStore({ favoritos: favoritosCopy.filter(item => item !== element) });
 			}
