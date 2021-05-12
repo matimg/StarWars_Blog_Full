@@ -18,7 +18,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			persona: [],
 			propiedades: [],
 			planeta: [],
-			detallePlaneta: []
+			detallePlaneta: [],
+			favoritos: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -65,6 +66,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ planeta: data.result, detallePlaneta: data.result.properties }))
 					.catch(err => console.error(err));
+			},
+			addFavorito: nombre => {
+				let favoritosCopy = [...store.favoritos];
+				favoritosCopy.push(nombre);
+				setStore({ favoritos: favoritosCopy });
+			},
+			removeFavorito: nombre => {
+				let favoritosCopy = [...store.favoritos];
+				setStore({ favoritos: favoritosCopy.filter(item => item !== element) });
 			}
 		}
 	};
