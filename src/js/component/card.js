@@ -12,7 +12,7 @@ const Card = props => {
 					<h5 className="card-title">{props.name}</h5>
 
 					<p className="card-text">Is simply dummy text of the printing and typesetting industry.</p>
-					<Link to={"/character_details/" + props.id}>
+					<Link to={props.detalle + props.id}>
 						<button className="btn btn-warning">Learn more!</button>
 					</Link>
 				</div>
@@ -26,5 +26,6 @@ export default Card;
 Card.propTypes = {
 	name: PropTypes.string,
 	image: PropTypes.string,
-	id: PropTypes.string
+	id: PropTypes.string,
+	detalle: PropTypes.string
 };

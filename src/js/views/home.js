@@ -17,6 +17,7 @@ export const Home = () => {
 							name={item.name}
 							id={item.uid}
 							image="https://cdn6.dibujos.net/images/listas/140/darth-vader.jpg"
+							detalle="/character_details/"
 						/>
 					);
 				})}
@@ -29,7 +30,9 @@ export const Home = () => {
 						<Card
 							key={index}
 							name={item.name}
+							id={item.uid}
 							image="https://i.pinimg.com/originals/e0/c9/bd/e0c9bd2e3166c58a9aea8bb85f20e8a9.jpg"
+							detalle="/planet_details/"
 						/>
 					);
 				})}
