@@ -15,7 +15,7 @@ const Card = props => {
 
 					<p className="card-text">Is simply dummy text of the printing and typesetting industry.</p>
 					<Link to={props.detalle + props.id}>
-						<button className="btn btn-outline-warning">Learn more!</button>
+						<button className="btn btn-outline-secondary">Learn more!</button>
 					</Link>
 					<button
 						className={store.btnFavoritos[props.index]}

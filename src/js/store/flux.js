@@ -20,7 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planeta: [],
 			detallePlaneta: [],
 			favoritos: [],
-			btnFavoritos: Array(200).fill("btn btn-outline-warning ml-5")
+			btnFavoritos: Array(200).fill("btn btn-outline-warning ml-5"),
+			loading: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -28,10 +29,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-                */
 				//OBTENGO PERSONAS DESDE API
+				const store = getStore();
+				setStore({ loading: true });
 				fetch("https://www.swapi.tech/api/people")
 					.then(res => res.json())
 					.then(data => setStore({ personas: data.results }))
@@ -39,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//OBTENGO PLANETAS DESDE API
 				fetch("https://www.swapi.tech/api/planets")
 					.then(res => res.json())
-					.then(data => setStore({ planetas: data.results }))
+					.then(data => setStore({ planetas: data.results, loading: false }))
 					.catch(err => console.error(err));
 			},
 			changeColor: (index, color) => {
@@ -57,15 +57,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			getPersona: id => {
+				const store = getStore();
+				setStore({ loading: true });
 				fetch("https://www.swapi.tech/api/people/" + id)
 					.then(res => res.json())
-					.then(data => setStore({ persona: data.result, propiedades: data.result.properties }))
+					.then(data =>
+						setStore({ persona: data.result, propiedades: data.result.properties, loading: false })
+					)
 					.catch(err => console.error(err));
 			},
 			getPlaneta: id => {
+				const store = getStore();
+				setStore({ loading: true });
 				fetch("https://www.swapi.tech/api/planets/" + id)
 					.then(res => res.json())
-					.then(data => setStore({ planeta: data.result, detallePlaneta: data.result.properties }))
+					.then(data =>
+						setStore({ planeta: data.result, detallePlaneta: data.result.properties, loading: false })
+					)
 					.catch(err => console.error(err));
 			},
 			addFavorito: (nombre, key) => {
