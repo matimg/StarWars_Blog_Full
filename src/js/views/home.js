@@ -21,7 +21,7 @@ export const Home = () => {
 								key={index}
 								name={item.name}
 								id={item.uid}
-								image={personaje}
+								image={store.personajesImg[index]}
 								detalle="/character_details/"
 								index={index}
 							/>

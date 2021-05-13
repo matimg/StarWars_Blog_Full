@@ -10,7 +10,7 @@ export const Navbar = () => {
 		<nav
 			className="navbar fixed-top navbar-light mb-3 d-flex justify-content-between"
 			style={{ backgroundColor: "#000000" }}>
-			<div className="ml-5" />
+			<div className="ml-5 p-2" />
 			<Link to="/">
 				<img className="ml-5" src={star_wars_img} height="80px" width="200px" />
 			</Link>
@@ -24,7 +24,9 @@ export const Navbar = () => {
 						aria-haspopup="true"
 						aria-expanded="false">
 						Favorites
-						<div className="bg-dark text-warning text-center ml-1 mr-1 px-1 rounded d-inline">
+						<div
+							className="text-warning text-center ml-1 mr-1 px-1 rounded d-inline"
+							style={{ backgroundColor: "#000000" }}>
 							{store.favoritos.length}
 						</div>
 					</button>

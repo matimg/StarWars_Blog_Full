@@ -21,7 +21,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			detallePlaneta: [],
 			favoritos: [],
 			btnFavoritos: Array(200).fill("btn btn-outline-warning ml-5"),
-			loading: false
+			loading: false,
+			personajesImg: [
+				"https://i2.wp.com/www.lafosadelrancor.com/wp-content/uploads/2021/02/luke-retorno-de-jedi-lista-cortada_widelg.jpg?resize=678%2C381&ssl=1",
+				"https://www.alfabetajuega.com/multimedia/imagenes/201703/183307.alfabetajuega-c3po.jpg",
+				"https://e00-marca.uecdn.es/assets/multimedia/imagenes/2020/05/03/15885120366138.jpg",
+				"https://imagenes.milenio.com/WHCg8mdgTozT47y-UTxiUJHAQ_Q=/958x596/https://www.milenio.com/uploads/media/2020/07/16/la-subasta-se-realizara-el_44_14_831_517.jpg",
+				""
+			]
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -86,7 +93,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let favoritosCopy = [...store.favoritos];
 				let newBtnFavoritos = [...store.btnFavoritos];
 				newBtnFavoritos[key] = "btn btn-warning ml-5";
-				let existe = favoritosCopy.includes(element);
+				let existe = favoritosCopy.some(element => element.key == key);
 				if (!existe) {
 					favoritosCopy.push(element);
 					setStore({ favoritos: favoritosCopy });
@@ -100,7 +107,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let favoritosCopy = [...store.favoritos];
 				let newBtnFavoritos = [...store.btnFavoritos];
 				newBtnFavoritos[element.key] = "btn btn-outline-warning ml-5";
-				setStore({ favoritos: favoritosCopy.filter(item => item !== element) });
+				setStore({ favoritos: favoritosCopy.filter(item => item.key !== element.key) });
 				setStore({ btnFavoritos: newBtnFavoritos });
 			}
 		}
