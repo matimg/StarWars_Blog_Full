@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			propiedades: [],
 			planeta: [],
 			detallePlaneta: [],
-			favoritos: []
+			favoritos: [],
+			btnFavoritos: Array(200).fill("btn btn-outline-warning ml-5")
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -67,16 +68,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ planeta: data.result, detallePlaneta: data.result.properties }))
 					.catch(err => console.error(err));
 			},
-			addFavorito: element => {
+			addFavorito: (nombre, key) => {
 				const store = getStore();
+				const actions = getActions();
+				let element = {
+					nombre: nombre,
+					key: key
+				};
 				let favoritosCopy = [...store.favoritos];
-				favoritosCopy.push(element);
-				setStore({ favoritos: favoritosCopy });
+				let newBtnFavoritos = [...store.btnFavoritos];
+				newBtnFavoritos[key] = "btn btn-warning ml-5";
+				let existe = favoritosCopy.includes(element);
+				if (!existe) {
+					favoritosCopy.push(element);
+					setStore({ favoritos: favoritosCopy });
+					setStore({ btnFavoritos: newBtnFavoritos });
+				} else {
+					actions.removeFavorito(element);
+				}
 			},
 			removeFavorito: element => {
 				const store = getStore();
 				let favoritosCopy = [...store.favoritos];
+				let newBtnFavoritos = [...store.btnFavoritos];
+				newBtnFavoritos[element.key] = "btn btn-outline-warning ml-5";
 				setStore({ favoritos: favoritosCopy.filter(item => item !== element) });
+				setStore({ btnFavoritos: newBtnFavoritos });
 			}
 		}
 	};

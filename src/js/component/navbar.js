@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+
 	return (
 		<nav
 			className="navbar fixed-top navbar-light mb-3 d-flex justify-content-between"
@@ -34,7 +35,7 @@ export const Navbar = () => {
 						{store.favoritos.map((item, index) => {
 							return (
 								<li key={index} className="dropdown-item bg-dark text-white" href="#">
-									{item}{" "}
+									{item.nombre}{" "}
 									<i
 										type="button"
 										className="fas fa-trash ml-2"

@@ -19,6 +19,7 @@ export const Home = () => {
 							id={item.uid}
 							image={personaje}
 							detalle="/character_details/"
+							index={index}
 						/>
 					);
 				})}
@@ -28,7 +29,14 @@ export const Home = () => {
 			<div className="row flex-row flex-nowrap" style={{ overflowX: "auto", overflowY: "hidden" }}>
 				{store.planetas.map((item, index) => {
 					return (
-						<Card key={index} name={item.name} id={item.uid} image={planeta} detalle="/planet_details/" />
+						<Card
+							key={index}
+							name={item.name}
+							id={item.uid}
+							image={planeta}
+							detalle="/planet_details/"
+							index={index + 10}
+						/>
 					);
 				})}
 			</div>

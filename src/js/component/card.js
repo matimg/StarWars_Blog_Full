@@ -15,9 +15,11 @@ const Card = props => {
 
 					<p className="card-text">Is simply dummy text of the printing and typesetting industry.</p>
 					<Link to={props.detalle + props.id}>
-						<button className="btn btn-warning">Learn more!</button>
+						<button className="btn btn-outline-warning">Learn more!</button>
 					</Link>
-					<button className="btn btn-outline-warning ml-5" onClick={() => actions.addFavorito(props.name)}>
+					<button
+						className={store.btnFavoritos[props.index]}
+						onClick={() => actions.addFavorito(props.name, props.index)}>
 						<i className="far fa-heart" />
 					</button>
 				</div>
@@ -32,5 +34,6 @@ Card.propTypes = {
 	name: PropTypes.string,
 	image: PropTypes.string,
 	id: PropTypes.string,
-	detalle: PropTypes.string
+	detalle: PropTypes.string,
+	index: PropTypes.number
 };
