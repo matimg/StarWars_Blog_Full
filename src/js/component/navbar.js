@@ -32,7 +32,7 @@ export const Navbar = () => {
 					</button>
 					<div className="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuButton">
 						<li className="dropdown-item bg-dark text-white">
-							{store.favoritos.length == 0 ? "(empty)" : ""}
+							{store.favoritos.length == 0 ? "(Empty)" : ""}
 						</li>
 						{store.favoritos.map((item, index) => {
 							return (

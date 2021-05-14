@@ -5,7 +5,6 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import Details from "./views/details.js";
 import PlanetDetails from "./views/planetDetails.js";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -36,7 +35,6 @@ const Layout = () => {
 							<h1>Not found!</h1>
 						</Route>
 					</Switch>
-					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>
