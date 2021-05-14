@@ -37,7 +37,7 @@ export const Home = () => {
 								key={index}
 								name={item.name}
 								id={item.uid}
-								image={planeta}
+								image={store.planetasImg[index]}
 								detalle="/planet_details/"
 								index={index + 10}
 							/>
