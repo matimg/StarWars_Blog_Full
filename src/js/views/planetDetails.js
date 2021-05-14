@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import planeta from "../../img/planeta.png";
 import Spinner from "../component/spinner";
 import { Footer } from "../component/footer";
 

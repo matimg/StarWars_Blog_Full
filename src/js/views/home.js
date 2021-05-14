@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import personaje from "../../img/personaje.jpg";
-import planeta from "../../img/planeta.png";
 import "../../styles/home.scss";
 import Card from "../component/card";
 import { Context } from "../store/appContext";
