@@ -1,6 +1,6 @@
 import React from "react";
 
-const Register = () => {
+const Login = () => {
 	return (
 		<div className="container mt-5 pt-5 d-flex justify-content-center">
 			<div
@@ -10,33 +10,7 @@ const Register = () => {
 					<div className="well well-sm">
 						<form className="form-horizontal" method="post">
 							<fieldset>
-								<legend className="text-center text-warning header">Create Account</legend>
-
-								<div className="form-group">
-									<div className="col-md-12">
-										<input
-											id="fname"
-											name="name"
-											type="text"
-											placeholder="First Name"
-											className="form-control"
-											required
-										/>
-									</div>
-								</div>
-								<div className="form-group">
-									<div className="col-md-12">
-										<input
-											id="lname"
-											name="name"
-											type="text"
-											placeholder="Last Name"
-											className="form-control"
-											required
-										/>
-									</div>
-								</div>
-
+								<legend className="text-center text-warning header">Login</legend>
 								<div className="form-group">
 									<div className="col-md-12">
 										<input
@@ -49,7 +23,6 @@ const Register = () => {
 										/>
 									</div>
 								</div>
-
 								<div className="form-group">
 									<div className="col-md-12">
 										<input
@@ -78,4 +51,4 @@ const Register = () => {
 	);
 };
 
-export default Register;
+export default Login;
