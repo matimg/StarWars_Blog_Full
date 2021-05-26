@@ -45,7 +45,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"https://lumiere-a.akamaihd.net/v1/images/databank_naboo_01_169_6cd7e1e0.jpeg?region=0%2C0%2C1560%2C878&width=768",
 				"https://lumiere-a.akamaihd.net/v1/images/Coruscant_03db43b4.jpeg?region=0%2C0%2C1536%2C864&width=768",
 				"https://lumiere-a.akamaihd.net/v1/images/kamino-main_3001369e.jpeg?region=158%2C0%2C964%2C542&width=768"
-			]
+			],
+			usuarioActual: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

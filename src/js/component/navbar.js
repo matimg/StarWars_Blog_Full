@@ -6,6 +6,64 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
+	const Dropdown = () => {
+		if (!store.usuarioActual.user) {
+			return (
+				<div className="m-0">
+					<Link to="/register">
+						<button className="btn btn-warning" type="button" id="dropdownMenuButton">
+							Register
+						</button>
+					</Link>
+					&nbsp;
+					<Link to="/login">
+						<button className="btn btn-warning" type="button" id="dropdownMenuButton">
+							Login
+						</button>
+					</Link>
+				</div>
+			);
+		} else {
+			return (
+				<div className="m-0">
+					<div className="dropdown">
+						<button
+							className="btn btn-warning dropdown-toggle"
+							type="button"
+							id="dropdownMenuButton"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
+							Favorites
+							<div
+								className="text-warning text-center ml-1 mr-1 px-1 rounded d-inline"
+								style={{ backgroundColor: "#000000" }}>
+								{store.favoritos.length}
+							</div>
+						</button>
+						<div className="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuButton">
+							<li className="dropdown-item bg-dark text-white">
+								{store.favoritos.length == 0 ? "(Empty)" : ""}
+							</li>
+							{store.favoritos.map((item, index) => {
+								return (
+									<li key={index} className="dropdown-item bg-dark text-white" href="#">
+										{item.nombre}{" "}
+										<i
+											type="button"
+											className="fas fa-trash ml-2"
+											onClick={() => actions.removeFavorito(item)}
+										/>
+									</li>
+								);
+							})}
+						</div>
+					</div>
+				</div>
+			);
+		}
+	};
+
 	return (
 		<nav
 			className="navbar fixed-top navbar-light mb-3 d-flex justify-content-between"
@@ -14,41 +72,7 @@ export const Navbar = () => {
 			<Link to="/">
 				<img className="ml-5" src={star_wars_img} height="80px" width="200px" />
 			</Link>
-			<div className="m-0">
-				<div className="dropdown">
-					<button
-						className="btn btn-warning dropdown-toggle"
-						type="button"
-						id="dropdownMenuButton"
-						data-toggle="dropdown"
-						aria-haspopup="true"
-						aria-expanded="false">
-						Favorites
-						<div
-							className="text-warning text-center ml-1 mr-1 px-1 rounded d-inline"
-							style={{ backgroundColor: "#000000" }}>
-							{store.favoritos.length}
-						</div>
-					</button>
-					<div className="dropdown-menu dropdown-menu-right bg-dark" aria-labelledby="dropdownMenuButton">
-						<li className="dropdown-item bg-dark text-white">
-							{store.favoritos.length == 0 ? "(Empty)" : ""}
-						</li>
-						{store.favoritos.map((item, index) => {
-							return (
-								<li key={index} className="dropdown-item bg-dark text-white" href="#">
-									{item.nombre}{" "}
-									<i
-										type="button"
-										className="fas fa-trash ml-2"
-										onClick={() => actions.removeFavorito(item)}
-									/>
-								</li>
-							);
-						})}
-					</div>
-				</div>
-			</div>
+			<Dropdown />
 		</nav>
 	);
 };
