@@ -7,7 +7,7 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
 	const Dropdown = () => {
-		if (!store.usuarioActual.user) {
+		if (!store.usuarioActual) {
 			return (
 				<div className="m-0">
 					<Link to="/register">

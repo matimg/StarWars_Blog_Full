@@ -46,12 +46,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"https://lumiere-a.akamaihd.net/v1/images/Coruscant_03db43b4.jpeg?region=0%2C0%2C1536%2C864&width=768",
 				"https://lumiere-a.akamaihd.net/v1/images/kamino-main_3001369e.jpeg?region=158%2C0%2C964%2C542&width=768"
 			],
-			usuarioActual: {}
+			usuarioActual: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
+			},
+			login: async (mail, pass) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify({
+					email: mail,
+					password: pass
+				});
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw
+				};
+
+				const resLogin = await fetch(process.env.BACKEND_URL + "/login", requestOptions);
+				const data = await resLogin.json();
+				console.log(data);
+				sessionStorage.setItem("token", data.token);
+				setStore({ usuarioActual: data.user });
 			},
 			loadSomeData: () => {
 				//OBTENGO PERSONAS DESDE API
