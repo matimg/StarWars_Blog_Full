@@ -74,6 +74,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				sessionStorage.setItem("token", data.token);
 				setStore({ usuarioActual: data.user });
 			},
+			logout: () => {
+				sessionStorage.removeItem("token");
+				setStore({ usuarioActual: null });
+			},
+			register: async (firstName, lastName, mail, pass) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+
+				var raw = JSON.stringify({
+					first_name: firstName,
+					last_name: lastName,
+					email: mail,
+					password: pass
+				});
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw
+				};
+
+				const resRegister = await fetch(process.env.BACKEND_URL + "/user", requestOptions);
+				const data = await resRegister.json();
+				console.log(data);
+			},
 			loadSomeData: () => {
 				//OBTENGO PERSONAS DESDE API
 				const store = getStore();

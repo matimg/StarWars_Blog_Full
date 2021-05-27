@@ -6,8 +6,12 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
+	const logout = () => {
+		actions.logout();
+	};
+
 	const Dropdown = () => {
-		if (!store.usuarioActual) {
+		if (!sessionStorage.getItem("token")) {
 			return (
 				<div className="m-0">
 					<Link to="/register">
@@ -59,6 +63,9 @@ export const Navbar = () => {
 							})}
 						</div>
 					</div>
+					<button className="btn btn-warning" type="button" id="dropdownMenuButton" onClick={logout}>
+						Logout
+					</button>
 				</div>
 			);
 		}

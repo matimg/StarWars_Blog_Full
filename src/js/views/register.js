@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
+	const { store, actions } = useContext(Context);
+	const [firstName, setFirstName] = useState();
+	const [lastName, setLastName] = useState();
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
+	const history = useHistory();
+
+	const register = e => {
+		e.preventDefault();
+		actions.register(firstName, lastName, email, password);
+		actions.login(email, password);
+		history.push("/");
+	};
+
 	return (
 		<div className="container mt-5 pt-5 d-flex justify-content-center">
 			<div
@@ -8,7 +24,7 @@ const Register = () => {
 				style={{ backgroundColor: "#000000", border: "solid", borderColor: "yellow" }}>
 				<div className="col-md-12">
 					<div className="well well-sm">
-						<form className="form-horizontal" method="post">
+						<form className="form-horizontal" method="post" onSubmit={register}>
 							<fieldset>
 								<legend className="text-center text-warning header">Create Account</legend>
 
@@ -16,10 +32,11 @@ const Register = () => {
 									<div className="col-md-12">
 										<input
 											id="fname"
-											name="name"
+											name="fname"
 											type="text"
 											placeholder="First Name"
 											className="form-control"
+											onChange={e => setFirstName(e.target.value)}
 											required
 										/>
 									</div>
@@ -28,11 +45,11 @@ const Register = () => {
 									<div className="col-md-12">
 										<input
 											id="lname"
-											name="name"
+											name="lname"
 											type="text"
 											placeholder="Last Name"
 											className="form-control"
-											required
+											onChange={e => setLastName(e.target.value)}
 										/>
 									</div>
 								</div>
@@ -45,6 +62,7 @@ const Register = () => {
 											type="email"
 											placeholder="Email Address"
 											className="form-control"
+											onChange={e => setEmail(e.target.value)}
 											required
 										/>
 									</div>
@@ -58,6 +76,7 @@ const Register = () => {
 											type="password"
 											placeholder="Password"
 											className="form-control"
+											onChange={e => setPassword(e.target.value)}
 											required
 										/>
 									</div>

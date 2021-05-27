@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const Login = () => {
 	const { store, actions } = useContext(Context);
-	const [username, setEmail] = useState();
+	const [email, setEmail] = useState();
 	const [password, setPassword] = useState();
+	const history = useHistory();
 
 	const login = e => {
 		e.preventDefault();
-		actions.login(username, password);
+		actions.login(email, password);
+		history.push("/");
 	};
 
 	return (
@@ -18,7 +21,7 @@ const Login = () => {
 				style={{ backgroundColor: "#000000", border: "solid", borderColor: "yellow" }}>
 				<div className="col-md-12">
 					<div className="well well-sm">
-						<form className="form-horizontal" action={login}>
+						<form className="form-horizontal" onSubmit={login}>
 							<fieldset>
 								<legend className="text-center text-warning header">Login</legend>
 								<div className="form-group">
