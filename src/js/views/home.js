@@ -20,8 +20,8 @@ export const Home = () => {
 								<Card
 									key={index}
 									name={item.name}
-									id={item.uid}
-									image={store.personajesImg[index]}
+									id={item.id}
+									image={item.urlImage}
 									detalle="/character_details/"
 									index={index}
 								/>
@@ -37,7 +37,7 @@ export const Home = () => {
 									key={index}
 									name={item.name}
 									id={item.uid}
-									image={store.planetasImg[index]}
+									image={item.urlImage}
 									detalle="/planet_details/"
 									index={index + 10}
 								/>

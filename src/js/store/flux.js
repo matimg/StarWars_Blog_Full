@@ -103,14 +103,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//OBTENGO PERSONAS DESDE API
 				const store = getStore();
 				setStore({ loading: true });
-				fetch("https://www.swapi.tech/api/people")
+				fetch(process.env.BACKEND_URL + "/people")
 					.then(res => res.json())
-					.then(data => setStore({ personas: data.results }))
+					.then(data => setStore({ personas: data }))
 					.catch(err => console.error(err));
 				//OBTENGO PLANETAS DESDE API
-				fetch("https://www.swapi.tech/api/planets")
+				fetch(process.env.BACKEND_URL + "/planets")
 					.then(res => res.json())
-					.then(data => setStore({ planetas: data.results, loading: false }))
+					.then(data => setStore({ planetas: data, loading: false }))
 					.catch(err => console.error(err));
 			},
 			changeColor: (index, color) => {

@@ -33,7 +33,7 @@ export default Card;
 Card.propTypes = {
 	name: PropTypes.string,
 	image: PropTypes.string,
-	id: PropTypes.string,
+	id: PropTypes.number,
 	detalle: PropTypes.string,
 	index: PropTypes.number
 };
